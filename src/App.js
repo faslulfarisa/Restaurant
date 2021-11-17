@@ -50,8 +50,10 @@ const totalFoodList= [
 },
 ]
 const App= ()=>{
-  const [foodList,setFoodList]=useState(totalFoodList)
-  // const [sortInput,setSortInput]=useState();
+  const [foodList,setFoodList]=useState(totalFoodList);
+  const [EditScreenVisibility,setEditScreenVisibility]=useState(false);
+  const[editFoodIndex,setEditFoodIndex]=useState(null);
+  
   const sort=(order)=>{
      switch(order){
        case"High to Low":
@@ -107,10 +109,19 @@ const App= ()=>{
             return newList;
           })
         }}
+        editFood={()=>{
+          setEditScreenVisibility(true)
+          setEditFoodIndex(i);
+        }
+        }
         />)
      })}
      </div>
-     <EditScreen/>
+     {EditScreenVisibility && <EditScreen
+     setEditScreenVisibility={setEditScreenVisibility}
+     foodList={foodList}
+     editFoodIndex={editFoodIndex}
+     />}
      </>
   );
   

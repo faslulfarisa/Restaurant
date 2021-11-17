@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 
 
-const FoodCard = ({title,imageUrl,price,description,status,closeCard,toggleStatus}) => {
+const FoodCard = ({title,imageUrl,price,description,status,closeCard,toggleStatus,editFood}) => {
     const [isDeleted,setIsDeleted]=useState(false);
     return (
         <div  className={`food-card ${isDeleted? "food-card--deleted" : ""}`}>
             <div className="food-card-close-button" 
-            onClick={
-                ()=>{
-                   setIsDeleted(true)
-                   setTimeout(closeCard,300) 
+                onClick={()=>{
+                    setIsDeleted(true)
+                    setTimeout(closeCard,300)
                 }
                 }
-            >
+                >
         </div>
         <div
-            className="food-card-edit-button"/>
+            className="food-card-edit-button"
+            onClick={editFood}
+            />
 
             <img className="food-card-thumbnail" src={imageUrl} alt={title} />
             <div className="food-card-details-section">
