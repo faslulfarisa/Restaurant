@@ -2,7 +2,9 @@ import {useState} from "react";
 
 const EditScreen = ({setEditScreenVisibility,
     editFoodIndex,
-    foodList
+    foodList,
+    setFoodList,
+    AddForm
 }) => {
     const[editFoodForm,
        setEditFoodForm] = useState(foodList[editFoodIndex]);
@@ -16,14 +18,29 @@ const EditScreen = ({setEditScreenVisibility,
             }
         })
     }
+    const editFoodSave=(e)=>{
+        e.preventDefault();
+        setFoodList(prev=>{
+            let newList=[...prev];
+            newList[editFoodIndex]=editFoodForm;
+            return newList;
+        })
+        setEditScreenVisibility(false);
+        
+    }
     return (
         <div className="over-view-screen">
             <div className="edit-food-card-container">
                 <div className="food-card-close-button"
                 onClick={()=>{
+                    if (AddForm ==="Add New"){
+                        setFoodList(foodList.filter(
+                            (_value,i)=>editFoodIndex!==i
+                        ))
+                    }
                     setEditScreenVisibility(false)}}/>
-                <h2>Edit</h2>
-                <form>
+                <h2>{AddForm}</h2>
+                <form onSubmit={editFoodSave}>
 
                 <div className="input-fields">
                     <label>Name</label>
