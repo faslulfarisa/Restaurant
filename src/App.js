@@ -12,7 +12,6 @@ const App = () => {
       <Switch>
         <Route path="/learn" component={Learn}/>
         <Route path="/" component={Home}/>
-
       </Switch>
     </Router>
     

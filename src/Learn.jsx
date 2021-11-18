@@ -1,29 +1,29 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
 const Learn = () => {
     const [todoList,setTodoList]=useState([]);
-    const[todo,setTodo]=useState("");
+    const [todo,setTodo]=useState("");
     return (
         <div>
-            <input type="text" value={todo} onChange={(e)=>{
+            <input type="text" value={todo}
+            onChange={(e)=>{
                 setTodo(e.target.value);
-                }}/>
-            <button 
+            }}></input>
+            <button
             onClick={()=>{
                 setTodoList(prev=>[...prev,todo]);
                 setTodo("")
-            }}
-               >Submit</button>
-            {todoList.map((value,i)=><div 
-            key={i}
+
+            }}>Add</button>
+            {todoList.map((value,i)=>
+            <div
             onClick={()=>{
                 setTodoList(todoList.filter(
-                    (_value,index)=> i!==index
+                  (_value,index)=>i!==index  
                 ))
-            }}
-            >{value}</div>)}
+            }}>{value}</div>
+            )}
         </div>
-     
     )
 }
 
