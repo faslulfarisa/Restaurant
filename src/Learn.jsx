@@ -1,27 +1,36 @@
 import { useState } from 'react'
+import './index.css'
+import Todo from "./Components/Todo"
 
 const Learn = () => {
     const [todoList,setTodoList]=useState([]);
     const [todo,setTodo]=useState("");
     return (
-        <div>
-            <input type="text" value={todo}
+        <div className="container">
+            <h1><center>Todos</center></h1>
+            <div className="input-section">
+            <input type="text" value={todo} 
             onChange={(e)=>{
                 setTodo(e.target.value);
             }}></input>
-            <button
+             <button className="todo-button"
             onClick={()=>{
-                setTodoList(prev=>[...prev,todo]);
+                console.log(todoList);
+                if(!todo)return
+                setTodoList(prev=>[...prev,{text:todo,status:false}]);
                 setTodo("")
 
-            }}>Add</button>
-            {todoList.map((value,i)=>
-            <div
-            onClick={()=>{
-                setTodoList(todoList.filter(
-                  (_value,index)=>i!==index  
-                ))
-            }}>{value}</div>
+            }}>ADD</button>
+            </div>
+          
+            {todoList.map((data,i)=>
+            <Todo
+            {...data}
+            key={i}
+            i={i}
+            setTodoList={setTodoList}
+            todoList={todoList}
+            />
             )}
         </div>
     )

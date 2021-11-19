@@ -3,6 +3,11 @@
     box-sizing: border-box;
     padding:0;
 }
+.container{
+    max-width: 900px;
+    margin: auto;
+    padding: 0 10px;
+}
 .food-card:hover{
     transform:scale(1.03);
 }
@@ -132,13 +137,52 @@ input{
 button{
     background-color: green;
     color: white;
-    padding: 5px 10px;
+    padding: 15px 62px;
     border: none;
     cursor: pointer;
-}
-/* .learn-input{
-    display: grid;
-    align-items:center;
-    height: 80px;
     
-} */
+}
+
+.input-section{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.todo-text{
+    width:50%;
+    font-size: 18px;
+    font-size: Roboto;
+    font-style: normal;
+
+}
+
+li{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    list-style: none;
+    background: #ECECEC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    margin:10px 0;
+    align-items: center;
+    padding: 5px;
+    gap:10px;
+}
+.status-circle{
+    height:20px;
+    width:20px;
+    border:1px solid #AEAEAE;
+    border-radius:50%;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.status-circle--active{
+    background-color:#3FF43B; 
+    border:solid 4px #fff;
+}
+.todo-close-button{
+    background-image: url(./assets/icons/Group\ 2.svg);
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    cursor: pointer;
+}
