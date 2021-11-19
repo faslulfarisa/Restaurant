@@ -33,6 +33,8 @@ const Todo=({
                     ))
                     }}
                     className="todo-close-button"/>
+                  <div  className="todo-edit-button"/>
+                   
                
             </li>
     )}

@@ -186,3 +186,8 @@ li{
     background-size: contain;
     cursor: pointer;
 }
+.todo-edit-button{
+    background-image: url(./assets/icons/pencil-alt-solid.svg);
+    width:20px;
+    height:20px;
+}
