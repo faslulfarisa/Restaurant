@@ -157,7 +157,7 @@ button{
 
 li{
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     list-style: none;
     background: #ECECEC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -178,16 +178,39 @@ li{
     background-color:#3FF43B; 
     border:solid 4px #fff;
 }
-.todo-close-button{
+ .todo-close-button,.todo-edit-button,
+ .todo-edit-cancel-button,.todo-edit-save-button{
     background-image: url(./assets/icons/Group\ 2.svg);
     background-repeat: no-repeat;
+    background-size: 120%;
     width: 25px;
     height: 25px;
-    background-size: contain;
     cursor: pointer;
-}
+    background-position: center;
+} 
 .todo-edit-button{
     background-image: url(./assets/icons/pencil-alt-solid.svg);
+    background-size: 100%;
+}
+.todo-edit-text-container{
+    position: relative;
+}
+.todo-edit-text-field{
+    width:100%;
+    padding: 8px 40px 8px 10px;
+    border: none; 
+}
+.todo-edit-cancel-button{
     width:20px;
     height:20px;
+    background-image: url(./assets/icons/Group\ 4.svg);
+    position:absolute;
+    right:5px;
+    top:50%;
+    transform:translateY(-50%)
+
+}
+.todo-edit-save-button{
+    background-image: url(./assets/icons/Vector\ 3.svg);
+    background-size: 100%;
 }

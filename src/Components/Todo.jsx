@@ -4,6 +4,7 @@ const Todo=({
     i,
     setTodoList,
     todoList,
+    isEditMode=true,
 })=>{
     return(
         <li className="todo-item"
@@ -23,19 +24,28 @@ const Todo=({
                    }
                }
                />
+               {isEditMode?
+               <>
+               <div className="todo-edit-text-container">
+                   <input type="text" className="todo-edit-text-field" value={text}/>
+                   <div className="todo-edit-cancel-button"/>
+               </div>
+               <div className="todo-edit-save-button"/>
+               </>
+               :
+               <>
                 <div className="todo-text">
                    {text}  
                 </div>
+                <div  className="todo-edit-button"/>
+                </>}
                 <div
                    onClick={()=>{ 
                     setTodoList(todoList.filter(
                       (_value,index)=>i!==index  
                     ))
                     }}
-                    className="todo-close-button"/>
-                  <div  className="todo-edit-button"/>
-                   
-               
+                    className="todo-close-button"/>   
             </li>
     )}
 
