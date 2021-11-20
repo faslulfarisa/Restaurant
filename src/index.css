@@ -21,7 +21,6 @@
 .food-card-thumbnail{
     width:100%;
     height: 200px;
-    /* border-image-width: 2px; */
 }
 .food-card-title{
     font-size: 1.4rem;
@@ -200,17 +199,41 @@ li{
     padding: 8px 40px 8px 10px;
     border: none; 
 }
-.todo-edit-cancel-button{
-    width:20px;
-    height:20px;
-    background-image: url(./assets/icons/Group\ 4.svg);
+.todo-edit-cancel-button,.todo-error-text{
     position:absolute;
     right:5px;
     top:50%;
     transform:translateY(-50%)
-
+}
+.todo-edit-cancel-button{
+    width:20px;
+    height:20px;
+    background-image: url(./assets/icons/Group\ 4.svg);
 }
 .todo-edit-save-button{
     background-image: url(./assets/icons/Vector\ 3.svg);
     background-size: 100%;
+}
+.todo-error-text{
+    width: 70%;
+    text-align: right;
+    right: 30px;
+    color: red;
+}
+.duplicate-error{
+    width: 70%;
+    color: red;
+
+}
+@media screen and (max-width:600px) {
+    .todo-button{
+        padding: 15px;
+    }
+    .duplicate-error{
+        right:65px;
+    }
+    .todo-item{
+        gap:5px;
+    }
+    
 }

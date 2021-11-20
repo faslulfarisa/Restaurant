@@ -120,7 +120,7 @@ const Home= ()=>{
           {...food}
           key={food.id}
           closeCard={()=>{
-          setFoodList(foodList.filter((_val,index)=>i!=index))
+          setFoodList(foodList.filter((_val,index)=>i!==index))
         }}
         toggleStatus={()=>{
           setFoodList(prev=>{
