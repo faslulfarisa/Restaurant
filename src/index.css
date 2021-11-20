@@ -229,9 +229,9 @@ li{
     .todo-button{
         padding: 15px;
     }
-    .duplicate-error{
+    /* .duplicate-error{
         right:65px;
-    }
+    } */
     .todo-item{
         gap:5px;
     }
