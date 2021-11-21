@@ -237,3 +237,22 @@ li{
     }
     
 }
+html,body,#root{
+    height: 100%;
+}
+.container{
+    height: 100%;
+}
+.todo-add{
+    height: 100%;
+  
+}
+
+ul{
+    max-height: calc(100% - 80px);
+    overflow: auto;
+}
+/* h1{
+    display: grid;
+    align-items: center;
+} */

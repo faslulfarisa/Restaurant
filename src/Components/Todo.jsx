@@ -1,4 +1,5 @@
 import { useState } from "react";
+import postData from "../Services/postData";
 const Todo=({
     status,
     text,
@@ -6,6 +7,7 @@ const Todo=({
     setTodoList,
     todoList,
     isEditMode,
+    user
 })=>{
     const[editText,setEditText]=useState(text);
     const[errorTextVisibility,setErrorTextVisibility]=useState(false);
@@ -16,6 +18,23 @@ const Todo=({
                <div className={`status-circle ${status? "status-circle--active": ""}`}
                onClick={
                    ()=>{
+                    postData("/todos",{
+                        user,
+                        todos:[
+                            ...todoList.map(({text,status},index)=>{
+                                if(i === index){
+                                return{
+                                    text,
+                                    status:!status
+                                }
+                            }
+                            return{
+                                text,
+                                status
+                            }
+                            })
+                        ]
+                    });
                        setTodoList(
                            prev=>{
                                let newTodoList=[...prev];
@@ -76,6 +95,23 @@ const Todo=({
                         },1500)
                         return
                     }
+                    postData("/todos",{
+                        user,
+                        todos:[
+                            ...todoList.map(({text,status},index)=>{
+                                if(i === index){
+                                    return{
+                                        text:editText,
+                                        status
+                                    }
+                                }
+                                return{
+                                    text,
+                                    status
+                                }
+                            })
+                        ]
+                    });
 
                     setTodoList(
                         prev=>{
@@ -114,7 +150,12 @@ const Todo=({
                 />
                 </>}
                 <div
-                   onClick={()=>{ 
+                   onClick={()=>{
+                    postData("/todos",{
+                        user,
+                        todos:todoList.filter(
+                            (_value,index)=>i!==index  )
+                    });
                     setTodoList(todoList.filter(
                       (_value,index)=>i!==index  
                     ))
