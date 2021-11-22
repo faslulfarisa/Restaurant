@@ -1,19 +1,16 @@
 import { useState} from "react";
-import postData from "./Services/postData";
-import {Link} from "react-router-dom";
-
+import {Link} from 'react-router-dom';
 const CreateUser = ({history}) => {
 
     const[userName,setUserName]=useState("");
     const[errorTextVisibility,setErrorTextVisibility]=useState(false);
-
-    const createNewUser=(e)=>{
+    const loginUser=(e)=>{
         e.preventDefault();
-        if(!userName)return
+        if(!userName)return 
         fetch(`http://192.168.1.42:8086/todos/${userName}`)
         .then((result)=>result.json())
         .then((value)=>{
-            if(value.length){
+            if(!value.length){
                 setErrorTextVisibility(true);
                 setTimeout(()=>{
                     setErrorTextVisibility(false);
@@ -21,32 +18,23 @@ const CreateUser = ({history}) => {
                 setUserName("");
                 return;
             }
-        postData("/todos",{
-            user:userName,
-            todos:[]
-        }).then(result=>{
-            if(result){
-                localStorage.setItem("userName",userName);
-                history.push(`/learn/user`);
-            }
-
-        })
-    })     
-        
+            localStorage.setItem("userName",userName);
+            history.push("/learn/user");  
+        })     
     }
     if (localStorage.getItem("userName")){
         history.push("/learn/user");
     }
     return (
             <div className="container">
-                <h1>Create User</h1> 
+                <h1>Login User</h1> 
                 <form style={{
                     display:"grid",
                     gridTemplateColumns:"auto auto",
                     justifyContent:"center"
                 }}
 
-                onSubmit={createNewUser}
+                onSubmit={loginUser}
                 >
                     <input type="text" value={userName}
                     onChange={
@@ -56,12 +44,13 @@ const CreateUser = ({history}) => {
                     <button type="submit">Submit</button>      
                 </form>
                 {errorTextVisibility &&<div className="error-text">
-                User Already Exists!!
+                Invalid UserName
                 </div>}
-
                 <div className="link-section">
-                    Already have an account
-                    <Link to="/learn/login">Click Here!</Link>
+                    Create New User
+                    <Link to="/learn" style={{
+                        marginLeft:"5px"
+                    }}>Create User</Link>
                 </div>
             </div>
     )

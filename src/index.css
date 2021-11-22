@@ -252,7 +252,22 @@ ul{
     max-height: calc(100% - 80px);
     overflow: auto;
 }
-/* h1{
+
+.logout-section button{
+    background-color: grey;
+}
+.logout-section{
     display: grid;
-    align-items: center;
-} */
+    justify-content: right;
+    margin: 15px o;
+}
+.error-text{
+    color:red;
+    text-align: center;
+    margin: 5px 0;
+
+}
+.link-section{
+    margin: 10px 0;
+    text-align: center;
+}

@@ -3,8 +3,8 @@ import './index.css'
 import Todo from "./Components/Todo"
 import postData from './Services/postData';
 
-const Learn = ({match,history}) => {
-    const user=match.params.user;
+const Learn = ({history}) => {
+    const user=localStorage.getItem("userName");
     const [todoList,setTodoList]=useState([]);
     const [todo,setTodo]=useState("");
     const [duplicateError,setDuplicateError]=useState(false);
@@ -14,6 +14,7 @@ const Learn = ({match,history}) => {
         .then((result)=>result.json())
         .then((value)=>{
             if(!value.length){
+                localStorage.removeItem("userName");
                 history.push("/learn");
                 return;
             }
@@ -27,10 +28,19 @@ const Learn = ({match,history}) => {
         })
     },
     []);
+    if (!localStorage.getItem("userName")){
+        history.push("/learn/login")
+    }
     return (
         <div className="container">
             <div className="todo-add">
-            <h1><center>Todos</center></h1>
+            <h1><center>Todos ({user})</center></h1>
+            <div className="logout-section">
+            <button onClick={()=>{
+                localStorage.removeItem("userName");
+                history.push("/learn/login");
+            }}>Logout</button>
+            </div>
             <div className="input-section">
             <input type="text" value={todo} 
             onChange={(e)=>{
