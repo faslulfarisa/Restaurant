@@ -27,7 +27,7 @@ const Learn = ({history}) => {
             }));
         })
     },
-    []);
+    [history,user]);
     if (!localStorage.getItem("userName")){
         history.push("/learn/login")
     }
