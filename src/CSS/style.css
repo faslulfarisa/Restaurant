@@ -21,6 +21,11 @@ html,body,#root{
 .grid-container div{
     display: grid;
     place-items: center;
-    color: red;
-    font-size: 2.5rem;
+    color:white;
+    height: calc(580px / 8 );
+}
+.chess_piece{
+    height: 45px;
+    width: 25px;
+
 }
