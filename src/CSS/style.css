@@ -6,6 +6,11 @@
 html,body,#root{
     height: 100%;
 }
+
+#root{
+    padding:30px;
+    background-color: #eee;
+}
 .grid-container{
     height: 100%;
     display: grid;
@@ -16,6 +21,7 @@ html,body,#root{
     height: 600px;
     margin: auto;
     background-color: black;
+    box-shadow: 4px 4px 5px 2px #0005;
 
 }
 .grid-container div{

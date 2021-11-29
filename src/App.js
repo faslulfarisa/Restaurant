@@ -11,11 +11,6 @@ import Login from './Login'
 import AsyncSum from './JS/AsyncSum';
 import Async from './JS/Async';
 import Grid from './CSS/Grid';
-
-
-
-
-
 const App = () => {
   return (
     <Router>
