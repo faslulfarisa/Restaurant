@@ -100,6 +100,27 @@ const Grid = () => {
     // console.log(chessState);
 
     const [chessState, setChessState]=useState(chessInitialState);
+    const [activeColumn,setActiveColumn]=useState([null,null])
+    const movePiece=(i,j,x,y)=>{
+        setChessState(
+            prev=>{
+                let newState = [...prev];
+                let newColumn =[...newState[i]]
+                let initialColumn =[...newState[x]];
+                console.log(prev[activeColumn[0]][activeColumn[1]]);
+
+
+                newColumn[j] =prev[x][y]
+                
+                initialColumn[y]={
+                    currentPiece:null
+                }
+                newState[i]=newColumn
+                newState[x]=initialColumn
+                return newState;
+            }
+        )
+    }
     return (
         <div className="grid-container">
             {chessState
@@ -110,28 +131,24 @@ const Grid = () => {
                 return(
                     <div style={{
                         backgroundColor:(i+j) %2 ?  "#954707" : "#e6ccab",
+                        border:activeColumn[0] === i && activeColumn[1] === j && "solid 3px red"
                     }}
-                    onClick = {() =>{
-                        if(i === 4){
-                            setChessState(
-                                prev=>{
-                                    let newState = [...prev];
-                                    let newColumn =[...newState[i]]
-                                    let initialColumn =[...newState[6]]
-
-                                    newColumn[j] ={
-                                        currentPiece:blackPawn
-                                    }
-                                    initialColumn[j]={
-                                        currentPiece:null
-                                    }
-                                    newState[i]=newColumn
-                                    newState[6]=initialColumn
-                                    return newState;
-                                }
-                            )
+                    onClick = {
+                        () =>{
+                        if(currentPiece){
+                            if(activeColumn[0] === null || activeColumn[1] === null){
+                                setActiveColumn([i,j]);
+                            }else{
+                                movePiece(i,j,activeColumn[0],activeColumn[1]);
+                                setActiveColumn([null,null])
+                            }
+                        } else{
+                            if (activeColumn[0] === null) return
+                            movePiece(i,j,activeColumn[0],activeColumn[1])
+                            setActiveColumn([null,null])
+                        }         
                         }
-                    }}
+                    }
                     >
                         {
                             currentPiece &&
